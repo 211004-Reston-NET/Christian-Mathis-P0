@@ -6,7 +6,28 @@ namespace userinterface
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            bool running = true;
+            IMenu page = new MainMenu();
+            while(running) 
+            {
+            Console.Clear();
+            page.Menu();
+         MenuType userInput = page.UserChoice();
+         switch (userInput )
+         {
+             case MenuType.MainMenu:
+             page = new MainMenu();
+             break;
+             case MenuType.Exit:
+             running = false;
+             break;
+
+             
+             default:
+              page = new MainMenu();
+             break;
+         }
+            }
         }
     }
 }
