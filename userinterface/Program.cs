@@ -1,4 +1,6 @@
 ﻿using System;
+using BusinessLogic;
+using DataAccessLogic;
 
 namespace userinterface
 {
@@ -19,7 +21,7 @@ namespace userinterface
              page = new MainMenu();
              break;
               case MenuType.AddCustomer:
-             page = new AddCustomer();
+             page = new AddCustomer(new CustomerBL(new Repository()));
              break;
              case MenuType.Exit:
              running = false;
