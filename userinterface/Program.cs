@@ -18,6 +18,9 @@ namespace userinterface
              case MenuType.MainMenu:
              page = new MainMenu();
              break;
+              case MenuType.AddCustomer:
+             page = new AddCustomer();
+             break;
              case MenuType.Exit:
              running = false;
              break;
