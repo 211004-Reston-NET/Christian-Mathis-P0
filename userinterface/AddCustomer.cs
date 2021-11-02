@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using BusinessLogic;
 
 namespace userinterface
@@ -22,7 +23,7 @@ namespace userinterface
             Console.WriteLine("[2]:Edit Address");
             Console.WriteLine("[3]:Edit Email");
             Console.WriteLine("[4]:Edit Phone Number");
-            Console.WriteLine("[5]:Submit Customer");
+            Console.WriteLine("[5]:Save Customer");
 
             Console.WriteLine("[6]:Exit");
         }
@@ -49,10 +50,17 @@ namespace userinterface
                 SingletonCustomer.customer.PhoneNumber = Console.ReadLine();
                     return MenuType.AddCustomer;
                       case "5":
-                Console.WriteLine("Customer Was Added");
-                _customerBL.AddCustomer(SingletonCustomer.customer);
-                Console.ReadLine();
-
+                      try{
+                        _customerBL.AddCustomer(SingletonCustomer.customer);
+                      }
+                      catch (SystemException ex)
+                      {
+                          Console.WriteLine(ex);
+                                                                 Console.WriteLine("You must input value to all fields above"+
+                                        "\nPress Enter to continue");
+                        Console.ReadLine();
+                        return MenuType.AddCustomer;
+                      }
                     return MenuType.AddCustomer;
                 case "6":
                     return MenuType.Exit;
@@ -62,6 +70,7 @@ namespace userinterface
                     Console.ReadLine();
                     return MenuType.AddCustomer;
             }
+            
         }
     }
 }

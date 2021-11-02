@@ -1,6 +1,8 @@
 ﻿using System;
 using BusinessLogic;
 using DataAccessLogic;
+using Models;
+using userInterface;
 
 namespace userinterface
 {
@@ -9,29 +11,22 @@ namespace userinterface
         static void Main(string[] args)
         {
             bool running = true;
-            IMenu page = new MainMenu();
-            while(running) 
+            IFactory factory = new MenuFactory();
+            IMenu page = factory.GetMenu(MenuType.MainMenu);
+            while (running)
             {
-            Console.Clear();
-            page.Menu();
-         MenuType userInput = page.UserChoice();
-         switch (userInput )
-         {
-             case MenuType.MainMenu:
-             page = new MainMenu();
-             break;
-              case MenuType.AddCustomer:
-             page = new AddCustomer(new CustomerBL(new Repository()));
-             break;
-             case MenuType.Exit:
-             running = false;
-             break;
-
-             
-             default:
-              page = new MainMenu();
-             break;
-         }
+                Console.Clear();
+                page.Menu();
+                MenuType userInput = page.UserChoice();
+               if (userInput == MenuType.Exit)
+               {
+                   running = false;
+                   Console.WriteLine("CYA");
+               }
+               else
+               {
+                   page = factory.GetMenu(userInput);
+               } 
             }
         }
     }

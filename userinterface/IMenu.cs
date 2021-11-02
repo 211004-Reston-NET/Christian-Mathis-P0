@@ -2,9 +2,26 @@ namespace userinterface
 {
     public enum MenuType
     {
+        StartMenu,
         MainMenu,
         AddCustomer,
+        ShowCustomer,
+        SearchForCustomer,
+        SearchByCategory,
+        ViewStoreFronts,
+        PlaceOrder,
+        ViewOrderHistory,
+        ReplenishInventory,
+        ShowLineItems,
+        ShowColumbia,
+        ShowCharleston,
+
+
+        
+
         Exit
+       
+
     }
     public interface IMenu
     {

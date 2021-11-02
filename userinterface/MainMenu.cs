@@ -6,9 +6,13 @@ namespace userinterface
     {
         public void Menu()
         {
-            Console.WriteLine("Hi there");
-            Console.WriteLine("[1]: Create New Account");
-            Console.WriteLine("[2]:Exit");
+            Console.WriteLine("Welcome to Christian's Technology Shop \nPlease type the number from the list and press enter \n ");
+            Console.WriteLine("[1]: Add Customer" +
+                            "\n[2]: Search for Customer" +
+                            "\n[3]: View Store Front" +
+                            "\n[4]: Place Order" +
+                            "\n[5]: View Order History" +
+                            "\n[6]: Exit");
         }
 
 
@@ -18,8 +22,16 @@ namespace userinterface
             switch (userChoice)
             {
                 case "1":
-                    return MenuType. AddCustomer;
+                    return MenuType.AddCustomer;
                 case "2":
+                    return MenuType.SearchForCustomer;
+                case "3":
+                    return MenuType.ViewStoreFronts;
+                case "4":
+                    return MenuType.PlaceOrder;
+                case "5":
+                    return MenuType.ViewOrderHistory;
+                case "6":
                     return MenuType.Exit;
                 default:
                     Console.WriteLine("   Please select one of the options from the list provided. " +
